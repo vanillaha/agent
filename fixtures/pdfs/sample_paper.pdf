@@ -1,0 +1,87 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 1197 >>
+stream
+BT /F1 11 Tf 72 760 Td (Sample Paper: Retrieval Quality in Long-Context RAG) Tj ET
+BT /F1 11 Tf 72 742 Td (Abstract. This synthetic fixture studies how chunk size affects) Tj ET
+BT /F1 11 Tf 72 724 Td (retrieval quality when context grows long. We build a controlled) Tj ET
+BT /F1 11 Tf 72 706 Td (corpus and measure recall at fixed budgets. The corpus contains) Tj ET
+BT /F1 11 Tf 72 688 Td (twelve topical clusters with gradual vocabulary drift. Each) Tj ET
+BT /F1 11 Tf 72 670 Td (cluster holds thirty synthetic paragraphs with unique markers.) Tj ET
+BT /F1 11 Tf 72 652 Td (1. Introduction. Retrieval augmented generation grounds model) Tj ET
+BT /F1 11 Tf 72 634 Td (output in external evidence. Long documents challenge fixed) Tj ET
+BT /F1 11 Tf 72 616 Td (budget retrievers because relevant evidence spreads thinly.) Tj ET
+BT /F1 11 Tf 72 598 Td (Prior work reports degraded recall as document length grows.) Tj ET
+BT /F1 11 Tf 72 580 Td (We hypothesize that smaller chunks sharpen boundary precision,) Tj ET
+BT /F1 11 Tf 72 562 Td (while larger chunks preserve local cohesion. Both effects) Tj ET
+BT /F1 11 Tf 72 544 Td (matter for answer support rate in evidence question answering.) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1072 >>
+stream
+BT /F1 11 Tf 72 760 Td (2. Method. We index every paragraph with a fixed encoder and) Tj ET
+BT /F1 11 Tf 72 742 Td (query each cluster with paraphrased questions. Retrieval uses) Tj ET
+BT /F1 11 Tf 72 724 Td (dense cosine similarity over normalized vectors. We sweep) Tj ET
+BT /F1 11 Tf 72 706 Td (chunk sizes from one hundred to two thousand characters with) Tj ET
+BT /F1 11 Tf 72 688 Td (a fixed overlap ratio of twelve percent. Metrics include) Tj ET
+BT /F1 11 Tf 72 670 Td (recall at five, boundary precision, and duplicate rate.) Tj ET
+BT /F1 11 Tf 72 652 Td (2.1 Corpus construction. Every paragraph embeds six marker) Tj ET
+BT /F1 11 Tf 72 634 Td (tokens that never appear outside its cluster. Markers allow) Tj ET
+BT /F1 11 Tf 72 616 Td (exact attribution of retrieved chunks without human labels.) Tj ET
+BT /F1 11 Tf 72 598 Td (2.2 Controls. Encoding batch order is fixed. Random seeds) Tj ET
+BT /F1 11 Tf 72 580 Td (are pinned for all encoders. The evaluation harness replays) Tj ET
+BT /F1 11 Tf 72 562 Td (cached model outputs to keep runs deterministic.) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 994 >>
+stream
+BT /F1 11 Tf 72 760 Td (3. Results. Recall at five peaks near medium chunk sizes and) Tj ET
+BT /F1 11 Tf 72 742 Td (declines at both extremes. Small chunks fragment evidence and) Tj ET
+BT /F1 11 Tf 72 724 Td (raise duplicate retrieval. Large chunks dilute similarity and) Tj ET
+BT /F1 11 Tf 72 706 Td (pull in irrelevant neighbors. Boundary precision improves) Tj ET
+BT /F1 11 Tf 72 688 Td (monotonically with smaller chunks. Answer support rate follows) Tj ET
+BT /F1 11 Tf 72 670 Td (recall closely across all settings.) Tj ET
+BT /F1 11 Tf 72 652 Td (4. Discussion. The tradeoff suggests adaptive strategies that) Tj ET
+BT /F1 11 Tf 72 634 Td (respect section boundaries. Limitations. Our corpus is synthetic,) Tj ET
+BT /F1 11 Tf 72 616 Td (so conclusions may not transfer to scanned scientific papers.) Tj ET
+BT /F1 11 Tf 72 598 Td (5. Conclusion. Chunk size is a first-order factor for long) Tj ET
+BT /F1 11 Tf 72 580 Td (context retrieval quality and must be reported in evaluations.) Tj ET
+endstream
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000127 00000 n 
+0000000197 00000 n 
+0000000323 00000 n 
+0000001572 00000 n 
+0000001698 00000 n 
+0000002822 00000 n 
+0000002948 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+3993
+%%EOF

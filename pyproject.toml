@@ -7,6 +7,8 @@ requires-python = ">=3.11,<3.14"
 dependencies = [
     "pydantic>=2.10.6,<3.0.0",
     "httpx>=0.27,<0.29",
+    "pypdf>=6.0,<7.0",        # M5 文本层 PDF 解析（轻量）；复杂版式解析由 docling 提供
+    "docling>=2.141,<3.0",    # M5 推荐解析器（AI 版面模型），Python 3.13 兼容性已验证
 ]
 
 [project.optional-dependencies]
