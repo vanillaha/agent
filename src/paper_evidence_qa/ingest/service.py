@@ -21,7 +21,7 @@ from paper_evidence_qa.ingest.models import (
     ParsedDocument,
     ParsedPage,
 )
-from paper_evidence_qa.ids import deterministic_id, random_id
+from paper_evidence_qa.ids import deterministic_id
 from paper_evidence_qa.schemas.common import ErrorCode
 from paper_evidence_qa.schemas.domain import Chunk, KBVersion
 
@@ -41,10 +41,9 @@ class IngestService:
         chunks: list[Chunk] = []
         parser_name = ""
         parser_version = ""
-        kb_id = random_id("kb")
 
         for source_path in request.files:
-            outcome = self._ingest_one(source_path, request.options, kb_id)
+            outcome = self._ingest_one(source_path, request.options, None)
             if isinstance(outcome, PaperIngestFailure):
                 failures.append(outcome)
                 continue
@@ -61,6 +60,19 @@ class IngestService:
                 {"failure_count": len(failures)},
             )
 
+        # kb_version 确定性派生：同文件集 + 同参数 + 同解析器 = 同版本号，
+        # 重复入库天然幂等（与"检索结果绑定版本、可复现"的承诺一致）
+        kb_id = deterministic_id(
+            "kb",
+            CHUNK_STRATEGY,
+            str(request.options.chunk_size),
+            str(request.options.chunk_overlap),
+            parser_name,
+            parser_version,
+            *sorted(p.source_file_sha256 for p in papers),
+        )
+        for chunk in chunks:
+            chunk.kb_version = kb_id
         kb = KBVersion(
             kb_version=kb_id,
             built_at=datetime.now(UTC),
@@ -74,7 +86,7 @@ class IngestService:
         )
         return IngestResult(papers=papers, failures=failures, chunks=chunks, kb_version=kb)
 
-    def _ingest_one(self, source_path: Path, options, kb_id: str) -> dict | PaperIngestFailure:  # noqa: ANN001
+    def _ingest_one(self, source_path: Path, options, kb_id: str | None) -> dict | PaperIngestFailure:  # noqa: ANN001
         path = str(source_path)
         if not source_path.exists():
             return PaperIngestFailure(
@@ -108,11 +120,12 @@ class IngestService:
             )
 
         paper_id = deterministic_id("ppr", digest)
+        signature = f"{CHUNK_STRATEGY}:{options.chunk_size}:{options.chunk_overlap}"
         built = [
             Chunk(
-                chunk_id=deterministic_id("chk", digest, str(index)),
+                chunk_id=deterministic_id("chk", digest, signature, str(index)),
                 paper_id=paper_id,
-                kb_version=kb_id,
+                kb_version="kb_placeholder",
                 chunk_index=index,
                 text=draft.text,
                 locator={

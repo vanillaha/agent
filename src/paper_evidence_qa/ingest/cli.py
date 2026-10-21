@@ -24,9 +24,24 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("files", nargs="+", type=Path, help="PDF 文件路径")
     parser.add_argument("--chunk-size", type=int, default=1200)
     parser.add_argument("--chunk-overlap", type=int, default=150)
+    parser.add_argument(
+        "--parser", choices=("pypdf", "docling"), default="pypdf",
+        help="解析器：pypdf 轻量文本层（默认）；docling 复杂版式（首次运行需下载模型）",
+    )
+    parser.add_argument(
+        "--db", type=Path, default=None,
+        help="SQLite 数据库路径；提供则把入库结果落库（幂等，可重复执行）",
+    )
     args = parser.parse_args(argv)
 
-    service = IngestService(parser=PypdfParser())
+    if args.parser == "docling":
+        from paper_evidence_qa.ingest.docling_parser import DoclingParser
+
+        parser_impl = DoclingParser()
+    else:
+        parser_impl = PypdfParser()
+
+    service = IngestService(parser=parser_impl)
     request = IngestRequest(
         files=args.files,
         options=IngestOptions(chunk_size=args.chunk_size, chunk_overlap=args.chunk_overlap),
@@ -51,6 +66,13 @@ def main(argv: list[str] | None = None) -> int:
         first_line = chunk.text.strip().splitlines()[0][:40] if chunk.text.strip() else ""
         print(f"  {chunk.chunk_id} | p{locator.page_from}-{locator.page_to} "
               f"| {chunk.char_start}-{chunk.char_end} | {first_line}")
+    if args.db is not None:
+        from paper_evidence_qa.storage.kb_store import KBStore
+
+        store = KBStore(args.db)
+        store.save_ingest(result)
+        store.close()
+        print(f"\n已落库 → {args.db}（知识库版本 {kb.kb_version}）")
     return 0
 
 
