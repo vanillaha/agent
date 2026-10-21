@@ -1,0 +1,40 @@
+{
+  "_comment": "脱敏样例：Semantic Scholar /paper/search 响应。全部为虚构数据，不含任何真实论文信息。",
+  "total": 2,
+  "offset": 0,
+  "data": [
+    {
+      "paperId": "0000000000000000000000000000000000000001",
+      "title": "Fixture Semantic Scholar Record",
+      "abstract": "Synthetic abstract used only for offline adapter tests.",
+      "year": 2024,
+      "venue": "Fixture Conference on Retrieval",
+      "externalIds": {
+        "DOI": "10.0000/FIXTURE.2024.777",
+        "ArXiv": "2401.00001",
+        "CorpusId": 900000001,
+        "DBLP": "conf/fixture/ZhangL24"
+      },
+      "citationCount": 9,
+      "openAccessPdf": {
+        "url": "https://example.org/fixture-s2-001.pdf",
+        "status": "GREEN",
+        "license": "CCBY"
+      },
+      "publicationTypes": ["Conference", "JournalArticle"],
+      "authors": [{ "name": "Zhang San" }, { "name": "Li Si" }]
+    },
+    {
+      "paperId": "0000000000000000000000000000000000000002",
+      "title": "Fixture Semantic Scholar Record Without Open Pdf",
+      "abstract": null,
+      "year": 2019,
+      "venue": "",
+      "externalIds": { "DOI": "10.0000/fixture.2019.778" },
+      "citationCount": 0,
+      "openAccessPdf": null,
+      "publicationTypes": ["Review"],
+      "authors": [{ "name": "Zhao Liu" }]
+    }
+  ]
+}

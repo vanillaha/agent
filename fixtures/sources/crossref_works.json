@@ -1,0 +1,47 @@
+{
+  "_comment": "脱敏样例：Crossref /works 响应。全部为虚构数据，不含任何真实论文信息。",
+  "status": "ok",
+  "message-type": "work-list",
+  "message": {
+    "total-results": 2,
+    "items": [
+      {
+        "DOI": "10.0000/FIXTURE.2020.001",
+        "title": ["A Fixture Journal Article  With Odd   Spacing"],
+        "author": [
+          { "given": "Zhang", "family": "San" },
+          { "given": "Zhang", "family": "San" },
+          { "name": "Fixture Consortium" }
+        ],
+        "issued": { "date-parts": [[2020, 5, 1]] },
+        "container-title": ["Fixture Journal of Retrieval"],
+        "type": "journal-article",
+        "license": [
+          {
+            "URL": "https://creativecommons.org/licenses/by/4.0/",
+            "start": { "date-parts": [[2020, 5, 1]] }
+          }
+        ],
+        "is-referenced-by-count": 42,
+        "abstract": "<jats:p>This fixture abstract is <jats:italic>synthetic</jats:italic> &amp; contains no real content.</jats:p>",
+        "URL": "https://example.org/fixture/10.0000-fix-2020-001",
+        "link": [
+          { "URL": "https://example.org/fixture-2020-001.pdf", "content-type": "application/pdf" }
+        ]
+      },
+      {
+        "DOI": "10.0000/FIXTURE.2019.002",
+        "title": [],
+        "author": [],
+        "issued": { "date-parts": [[2019]] },
+        "container-title": ["Fixture Proceedings"],
+        "type": "proceedings-article",
+        "license": [],
+        "is-referenced-by-count": 1,
+        "abstract": null,
+        "URL": "https://example.org/fixture/10.0000-fix-2019-002",
+        "link": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "_comment": "脱敏样例：OpenAlex /works 响应。全部为虚构数据，不含任何真实论文信息。",
+  "meta": { "count": 4, "per_page": 25, "page": 1 },
+  "results": [
+    {
+      "id": "https://openalex.org/W0000000001",
+      "doi": "https://doi.org/10.0000/FIXTURE.2024.001",
+      "title": "  A   Fixture Study of\nRetrieval Augmentation ",
+      "display_name": "A Fixture Study of Retrieval Augmentation",
+      "publication_year": 2024,
+      "type": "article",
+      "cited_by_count": 17,
+      "ids": {
+        "openalex": "https://openalex.org/W0000000001",
+        "doi": "https://doi.org/10.0000/FIXTURE.2024.001",
+        "mag": "9000000001"
+      },
+      "authorships": [
+        { "author": { "display_name": "Zhang San" } },
+        { "author": { "display_name": "zhang san" } },
+        { "author": { "display_name": "Li Si" } }
+      ],
+      "primary_location": {
+        "source": { "display_name": "Fixture Journal of Retrieval" },
+        "pdf_url": null,
+        "landing_page_url": "https://arxiv.org/abs/2401.00001v2"
+      },
+      "best_oa_location": {
+        "pdf_url": "https://example.org/fixture-001.pdf",
+        "landing_page_url": "https://example.org/fixture-001",
+        "license": "cc-by",
+        "version": "publishedVersion"
+      },
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "hybrid",
+        "oa_url": "https://example.org/fixture-001.pdf"
+      },
+      "abstract_inverted_index": {
+        "This": [0],
+        "fixture": [1, 9],
+        "abstract": [2],
+        "is": [3],
+        "synthetic": [4],
+        "and": [5],
+        "contains": [6],
+        "no": [7],
+        "real": [8],
+        "content.": [10]
+      }
+    },
+    {
+      "id": "https://openalex.org/W0000000002",
+      "doi": null,
+      "title": "Fixture Without Downloadable Full Text",
+      "display_name": "Fixture Without Downloadable Full Text",
+      "publication_year": 2023,
+      "type": "preprint",
+      "cited_by_count": 0,
+      "ids": { "openalex": "https://openalex.org/W0000000002" },
+      "authorships": [{ "author": { "display_name": "Wang Wu" } }],
+      "primary_location": { "source": null, "pdf_url": null, "landing_page_url": null },
+      "best_oa_location": null,
+      "open_access": { "is_oa": true, "oa_status": "green", "oa_url": null },
+      "abstract_inverted_index": null
+    },
+    {
+      "id": "https://openalex.org/W0000000003",
+      "doi": "10.0000/fixture.2022.003",
+      "title": "",
+      "display_name": "",
+      "publication_year": 2022,
+      "type": "article",
+      "cited_by_count": 3,
+      "ids": { "openalex": "https://openalex.org/W0000000003" },
+      "authorships": [],
+      "primary_location": null,
+      "best_oa_location": null,
+      "open_access": { "is_oa": false, "oa_status": "closed", "oa_url": null },
+      "abstract_inverted_index": null
+    },
+    {
+      "id": "https://openalex.org/W0000000004",
+      "doi": "10.0000/fixture.2021.004",
+      "title": "Fixture Closed Access Article",
+      "display_name": "Fixture Closed Access Article",
+      "publication_year": 2021,
+      "type": "review",
+      "cited_by_count": 5,
+      "ids": { "openalex": "https://openalex.org/W0000000004" },
+      "authorships": [{ "author": { "display_name": "Zhao Liu" } }],
+      "primary_location": {
+        "source": { "display_name": "Fixture Review" },
+        "pdf_url": null,
+        "landing_page_url": "https://example.org/fixture-004"
+      },
+      "best_oa_location": null,
+      "open_access": { "is_oa": false, "oa_status": "closed", "oa_url": null },
+      "abstract_inverted_index": { "Short": [0], "abstract.": [1] }
+    }
+  ]
+}
