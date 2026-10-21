@@ -14,6 +14,7 @@ from pypdf import PdfReader
 from pypdf.errors import PdfReadError
 
 from paper_evidence_qa.ingest.errors import IngestError
+from paper_evidence_qa.ingest.textnorm import normalize_text
 from paper_evidence_qa.schemas.common import ErrorCode
 
 PARSER_NAME = "pypdf"
@@ -39,8 +40,8 @@ class PypdfParser:
             reader = PdfReader(io.BytesIO(data))
             pages: list[list[str]] = []
             for page in reader.pages:
-                text = page.extract_text() or ""
-                pages.append([text])
+                text = normalize_text(page.extract_text() or "")
+                pages.append([text] if text else [])
         except IngestError:
             raise
         except PdfReadError as error:
