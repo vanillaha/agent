@@ -31,6 +31,14 @@ class DoclingParser:
     def _ensure_converter(self) -> None:
         if self._converter is not None:
             return
+        # 模型路径解析顺序：显式环境变量 → 默认缓存目录（docling-tools models download
+        # 的落点）。都不存在时交给 docling 自行联网下载（国内需 HF_ENDPOINT 镜像）。
+        import os
+
+        if not os.environ.get("DOCLING_ARTIFACTS_PATH"):
+            default_models = Path.home() / ".cache" / "docling" / "models"
+            if default_models.is_dir():
+                os.environ["DOCLING_ARTIFACTS_PATH"] = str(default_models)
         try:
             import docling
             from docling.document_converter import DocumentConverter
