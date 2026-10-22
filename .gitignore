@@ -27,3 +27,9 @@ data/
 artifacts/
 logs/
 *.log
+
+# 本地知识库数据库（运行时数据，不入库）
+kb.sqlite3
+
+# WorkBuddy 工作区数据（AI 协作记忆等，不入库）
+.workbuddy/
